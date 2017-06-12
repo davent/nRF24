@@ -34,8 +34,7 @@ func (device *NRF24L01P) setChannel(rf_ch byte) (err error) {
 
 func (device *NRF24L01P) SetFrequency(freq uint) (err error) {
 
-	// Ensure that the supplied frequecy is within exceptable range
-	// - 2400 to 2525
+	// freq must be between 2400 and 2525 MHz
 	if (freq < 2400) || (freq > 2525) {
 		return fmt.Errorf("Invalid frequency")
 	}

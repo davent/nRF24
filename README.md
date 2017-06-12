@@ -1,4 +1,4 @@
-# Go nRF24L01+
+# Go nRF24
 Go driver for the Nordic nRF24L01+ transceiver.
 
 This package provides functionality for interfacing with the Nordic nRF24L01+ module using Go.

@@ -37,29 +37,38 @@ func main() {
 	// - 2Mbps (RF_DR_2MBPS)
 	// - 1Mbps (RF_DR_1MBPS)
 	// - 512kbps (RF_DR_512KBPS)
-	radio.SetDataRate(nrf24.RF_DR_2MBPS)
+	if err = radio.SetDataRate(nrf24.RF_DR_2MBPS); err != nil {
+		log.Printf("Culd not set data rate: %s\n", err)
+	}
 
 	// Set the RF frequency
-	// - This can be any frequency from 2.4GHz to 2.525GHz in 2MHz divisions
-	// - RF_CH_2400MHZ, RF_CH_2402MHZ, RF_CH_2404MHZ ... RF_CH_2525MHZ
-	radio.SetChannel(nrf24.RF_CH_2400MHZ)
+	// - This can be any frequency from 2.4GHz to 2.525GHz specified in MHz
+	if err = radio.SetFrequency(2400); err != nil {
+		log.Printf("Could not set frequency: %s\n", err)
+	}
 
 	// Set the power output of the transmitting radio (from most power to least powerful)
 	// -  0dB  (RF_PWR_0DBM)
 	// - -6dB  (RF_PWR_6DBM)
 	// - -12dB (RF_PWR_12DBM)
 	// - -18dB (RF_PWR_18DBM)
-	radio.SetPowerAmplifier(nrf24.RF_PWR_18DBM)
+	if err = radio.SetPowerAmplifier(nrf24.RF_PWR_18DBM); err != nil {
+		log.Printf("Could not set power amplifer: %s\n", err)
+	}
 
 	// Set the CRC accuracy
 	// - 8bit  (CRC0_8BIT)
 	// - 16bit (CRC0_16BIT)
-	radio.SetCRCO(nrf24.CRC0_16BIT)
+	if err = radio.SetCRCO(nrf24.CRC0_16BIT); err != nil {
+		log.Printf("Could not set CRC: %s\n", err)
+	}
 
 	// Now we are ready to send! Turn the power to the radio on
 	// - true  = on
 	// - false = off
-	radio.PowerOn(true)
+	if err = radio.PowerOn(true); err != nil {
+		log.Printf("Could not power on: %s\n", err)
+	}
 
 	// Now, let's send our "Hello world!" messages
 	// - 'messages' is []byte of up to 32 bytes in length
@@ -69,6 +78,8 @@ func main() {
 	}
 
 	// Don't forget to turn the radio off before you leave!
-	radio.PowerOn(false)
+	if err = radio.PowerOn(false); err != nil {
+		log.Printf("Could not power off: %s\n", err)
+	}
 
 }

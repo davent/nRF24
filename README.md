@@ -29,7 +29,7 @@ import (
 
 func main() {
 
-  radio, err := nrf24l0P.New("/dev/spidev0.0")
+  radio, err := nrf24.New("/dev/spidev0.0")
   if err != nil {
     panic(err)
   }
@@ -54,12 +54,13 @@ func main() {
 package main
 
 import (
+  "fmt"
   "github.com/davent/nRF24"
 )
 
 func main() {
 
-  radio, err := nrf24l01P.New("/dev/spidev0.0")
+  radio, err := nrf24.New("/dev/spidev0.0")
   if err != nil {
     panic(err)
   }

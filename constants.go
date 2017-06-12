@@ -91,19 +91,9 @@ const (
 	ARD byte = 0xF0
 	ARC byte = 0x0F
 
-	// RF_CH - Keep spacing at 2MHz intervals
+	// RF_CH
 	RF_CH_MASK byte = 0x7F
-
-	RF_CH_2400MHZ byte = 0x00
-	RF_CH_2402MHZ byte = 0x02
-	RF_CH_2404MHZ byte = 0x04
-	RF_CH_2406MHZ byte = 0x06
-	RF_CH_2408MHZ byte = 0x08
-	RF_CH_2410MHZ byte = 0x0A
-
-	RF_CH_2476MHZ byte = 0x4C
-	/* ... */
-	RF_CH_2525MHZ byte = 0x7D
+	RF_CH_BASE uint = 2400
 
 	// RF_SETUP
 	CONT_WAVE  byte = 0x80

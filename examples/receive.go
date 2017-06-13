@@ -55,8 +55,8 @@ func main() {
 	// Set the data to eiter
 	// - 2Mbps (RF_DR_2MBPS)
 	// - 1Mbps (RF_DR_1MBPS)
-	// - 512kbps (RF_DR_512KBPS)
-	if err = radio.SetDataRate(nrf24.RF_DR_2MBPS); err != nil {
+	// - 250kbps (RF_DR_250KBPS)
+	if err = radio.SetDataRate(nrf24.RF_DR_250KBPS); err != nil {
 		log.Printf("Culd not set data rate: %s\n", err)
 	}
 
@@ -71,7 +71,7 @@ func main() {
 	// - -6dB  (RF_PWR_6DBM)
 	// - -12dB (RF_PWR_12DBM)
 	// - -18dB (RF_PWR_18DBM)
-	if err = radio.SetPowerAmplifier(nrf24.RF_PWR_18DBM); err != nil {
+	if err = radio.SetPowerAmplifier(nrf24.RF_PWR_0DBM); err != nil {
 		log.Printf("Could not set power amplifer: %s\n", err)
 	}
 

@@ -63,6 +63,10 @@ func main() {
 		log.Printf("Could not set CRC: %s\n", err)
 	}
 
+	if err = radio.SetAutoRetransmitCount(15); err != nil {
+		log.Printf("Could not set Auto Retransmit Count: %s\n", err)
+	}
+
 	// Now we are ready to send! Turn the power to the radio on
 	// - true  = on
 	// - false = off

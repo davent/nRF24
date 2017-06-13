@@ -46,6 +46,7 @@ func (device *NRF24L01P) PrintRegisters() {
 		fmt.Println()
 
 	}
+
 	// RF Setup
 	rf_setup, err := device.readRfSetupRegister()
 	if err != nil {
@@ -57,6 +58,17 @@ func (device *NRF24L01P) PrintRegisters() {
 		fmt.Printf("PLL_LOCK: %d\n", rf_setup.PLL_LOCK)
 		fmt.Printf("RF_DR_HIGH: %d\n", rf_setup.RF_DR_HIGH)
 		fmt.Printf("RF_PWR: %d\n", rf_setup.RF_PWR)
+		fmt.Println()
+	}
+
+	// Setup Retr
+	setup_retr, err := device.readSetupRetrRegister()
+	if err != nil {
+		fmt.Printf("Error: %s\n\n", err)
+	} else {
+		fmt.Println("=========\nSETUP_RETR\n=========")
+		fmt.Printf("ARD: %d\n", setup_retr.ARD)
+		fmt.Printf("ARC: %d\n", setup_retr.ARC)
 		fmt.Println()
 	}
 
